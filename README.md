@@ -63,7 +63,7 @@ I maintain detailed notes on concepts I find particularly interesting or challen
 - TensorFlow/Keras API patterns
 - Common pitfalls and their solutions
 
-**For detailed notes, see**: [Notes on Neural Networks and TensorFlow/Keras](./Notes-on-Neural-Networks-and-TensorFlow-Keras.md)
+**For detailed notes, see**: [Notes on Neural Networks and TensorFlow/Keras](./C2_W1_Lab01_Neurons_and_Layers_Notes)
 
 ## 🎓 Course Information
 
