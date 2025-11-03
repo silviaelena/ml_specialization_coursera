@@ -16,12 +16,22 @@ This repository serves as my learning playground for the Machine Learning Specia
 
 ```
 .
-├── C2_W1_Lab01_Neurons_and_Layers.ipynb    # Neural networks basics
-├── C2_W1_Lab02_CoffeeRoasting_TF.ipynb     # TensorFlow implementation
-├── C2_W1_Lab03_CoffeeRoasting_Numpy.ipynb  # NumPy implementation
-├── lab_*.py                                 # Utility functions
-├── images/                                  # Course images and diagrams
-└── archive/                                 # Archived/older versions
+└── Course2_AdvancedLearningAlgorithms/
+    ├── C2_W1_Lab01_Neurons_and_Layers.ipynb        # Neural networks basics
+    ├── C2_W1_Lab01_Neurons_and_Layers_Notes.md     # Lab 1 notes & explanations
+    ├── C2_W1_Lab02_CoffeeRoasting_TF.ipynb         # TensorFlow implementation
+    ├── C2_W1_Lab02_CoffeeRoasting_Notes.md         # Lab 2 notes (dataset, normalization)
+    ├── C2_W1_Lab03_CoffeeRoasting_Numpy.ipynb      # NumPy implementation
+    ├── lab_coffee_utils.py                          # Coffee roasting utilities
+    ├── lab_neurons_utils.py                         # Neural network utilities
+    ├── lab_utils_common.py                          # Common utility functions
+    ├── deeplearning.mplstyle                        # Matplotlib style file
+    ├── images/                                      # Course images and diagrams
+    │   ├── C2_W1_CoffeeRoasting.png
+    │   ├── C2_W1_NeuronsAndLayers.png
+    │   └── ...
+    └── archive/                                     # Archived/older versions
+        └── 20230202_lab_coffee_utils.py
 ```
 
 ## 🚀 Getting Started
@@ -58,12 +68,16 @@ jupyter notebook
 
 ## 📝 Learning Notes
 
-I maintain detailed notes on concepts I find particularly interesting or challenging. These include:
+I maintain detailed notes on concepts I find particularly interesting or challenging in markdown files alongside each lab notebook. These notes include:
 - Neural network fundamentals
 - TensorFlow/Keras API patterns
+- Dataset explanations (features, labels, decision boundaries)
+- Data normalization and preprocessing
 - Common pitfalls and their solutions
 
-**For detailed notes, see**: [Notes on Neural Networks and TensorFlow/Keras](Course2_AdvancedLearningAlgorithms/C2_W1_Lab01_Neurons_and_Layers_Notes.md)
+**Course 2 - Week 1 Notes:**
+- [Lab 1: Neurons and Layers](Course2_AdvancedLearningAlgorithms/C2_W1_Lab01_Neurons_and_Layers_Notes.md)
+- [Lab 2: Coffee Roasting with TensorFlow](Course2_AdvancedLearningAlgorithms/C2_W1_Lab02_CoffeeRoasting_Notes.md)
 
 ## 🎓 Course Information
 
