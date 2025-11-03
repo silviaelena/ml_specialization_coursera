@@ -1,132 +1,85 @@
-# ML_Specialization_Coursera
+# Machine Learning Specialization - Coursera
 
-## Disclaimer: Work in Progress
+A personal learning repository containing Jupyter notebooks and exercises from Stanford's Machine Learning Specialization on Coursera.
 
-## Getting started
+## 📚 About
 
-This is a playground for Jupyter Notebooks used in Coursera Machine Learning Specialization from Stanford.
-It is meant as a beginner work for just ramping up in the world of ML. I will also add occasional notes for different notions/areas/subjects.
+This repository serves as my learning playground for the Machine Learning Specialization course. It includes:
+- Lab notebooks with hands-on exercises
+- Personal notes and code comments
+- Utility functions and helper scripts
+- Experiments and explorations of ML concepts
 
-For each cell of code where there is something I need some notes on, I add comments.
+> **Note**: This is a work in progress as I progress through the course.
 
-## Notes on Neural Networks and TensorFlow/Keras
+## 📂 Repository Structure
 
-### Weight Initialization vs. Training
-
-A common point of confusion for me when starting with TensorFlow/Keras was understanding what happens automatically vs. what requires training.
-
-#### 1. Initialization (Automatic)
-When you first pass data through a layer, Keras **randomly initializes** the weights and sets bias to zero:
-
-```python
-linear_layer = tf.keras.layers.Dense(units=1, activation='linear')
-a1 = linear_layer(X_train[0].reshape(1,1))  # Triggers initialization
-
-w, b = linear_layer.get_weights()
-print(w, b)  # w = [[-1.09]], b = [0.]  ← Random initial values!
+```
+.
+├── C2_W1_Lab01_Neurons_and_Layers.ipynb    # Neural networks basics
+├── C2_W1_Lab02_CoffeeRoasting_TF.ipynb     # TensorFlow implementation
+├── C2_W1_Lab03_CoffeeRoasting_Numpy.ipynb  # NumPy implementation
+├── lab_*.py                                 # Utility functions
+├── images/                                  # Course images and diagrams
+└── archive/                                 # Archived/older versions
 ```
 
-These are **random starting values**, not the optimal ones!
+## 🚀 Getting Started
 
-#### 2. Training (You Must Do This)
-To find the **optimal** weights and biases that fit your data, you need to **train** the model:
+### Prerequisites
 
-```python
-# Compile the model (specify loss function and optimizer)
-model.compile(loss='mean_squared_error', optimizer='sgd')
+- Python 3.9+
+- Jupyter Notebook or JupyterLab
+- Required packages: NumPy, Matplotlib, TensorFlow
 
-# Train the model (this learns the optimal weights!)
-model.fit(X_train, Y_train, epochs=100)
+### Installation
 
-# Now the weights are optimized to fit your data
+1. Clone the repository:
+```bash
+git clone https://gitlab.cs.pub.ro/silvia_elena.nistor/ml_specialization_coursera.git
+cd ml_specialization_coursera
 ```
 
-#### What Each Part Does
-
-| Step | What Happens | Who Does It |
-|------|--------------|-------------|
-| **Create layer** | Define architecture | You |
-| **Initialize weights** | Set random starting values | Keras (automatic) |
-| **Train model** | Learn optimal weights from data | You call `model.fit()` |
-| **Make predictions** | Use learned weights | You call `model.predict()` |
-
-#### Real Workflow Example
-
-```python
-# 1. Create model
-model = tf.keras.Sequential([
-    tf.keras.layers.Dense(units=1, activation='linear')
-])
-
-# 2. Compile (specify how to learn)
-model.compile(optimizer='adam', loss='mse')
-
-# 3. Train (THIS is where optimal weights are computed!)
-model.fit(X_train, Y_train, epochs=1000)
-
-# 4. The model now has learned the best weights for your data
+2. Create a virtual environment (recommended):
+```bash
+python -m venv .venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 ```
 
-**Key Point**: Keras initializes random weights automatically, but **you must train the model** for it to learn the optimal weights that fit your data. Training is the process where the model adjusts weights to minimize error on your training data.
-
-### Defining Neural Networks Model Input: Old vs. New API
-
-You might encounter a deprecation warning about `input_shape` or `input_dim`. The TensorFlow/Keras API has evolved toward a more explicit way of defining model inputs.
-
-#### Old Way (Deprecated, But Still Works)
-
-```python
-model = Sequential([
-    Dense(1, input_dim=1, activation='sigmoid')  # Triggers warning
-])
+3. Install dependencies:
+```bash
+pip install numpy matplotlib tensorflow jupyter
 ```
 
-#### New Recommended Way
-
-```python
-from tensorflow.keras.layers import Input
-
-model = Sequential([
-    Input(shape=(1,)),                           # Explicit Input layer
-    Dense(1, activation='sigmoid')
-])
+4. Launch Jupyter:
+```bash
+jupyter notebook
 ```
 
-#### Why the Change?
+## 📝 Learning Notes
 
-**1. Explicit is Better Than Implicit**
-Having a dedicated `Input` layer makes it crystal clear what shape your model expects:
+I maintain detailed notes on concepts I find particularly interesting or challenging. These include:
+- Neural network fundamentals
+- TensorFlow/Keras API patterns
+- Common pitfalls and their solutions
 
-```python
-# Old: input shape hidden in Dense layer parameters
-Dense(128, input_shape=(784,))
+**For detailed notes, see**: [Notes on Neural Networks and TensorFlow/Keras](./Notes-on-Neural-Networks-and-TensorFlow-Keras.md)
 
-# New: input shape is explicit and separate
-Input(shape=(784,))
-Dense(128)
-```
+## 🎓 Course Information
 
-**2. Consistency Across APIs**
-TensorFlow has multiple ways to build models (Sequential, Functional, Subclassing). Using `Input` works consistently across all of them:
+- **Course**: [Machine Learning Specialization](https://www.coursera.org/specializations/machine-learning-introduction)
+- **Instructor**: Andrew Ng (Stanford University)
+- **Platform**: Coursera
 
-```python
-# Functional API - always used Input
-inputs = Input(shape=(784,))
-x = Dense(128)(inputs)
-model = Model(inputs, x)
+## 🔧 Development
 
-# Sequential API - now uses Input too for consistency
-model = Sequential([
-    Input(shape=(784,)),
-    Dense(128)
-])
-```
+Each notebook contains inline comments explaining concepts and implementations. Feel free to explore and modify the code for your own learning.
 
-**3. Better Model Inspection**
-With an explicit `Input` layer, you can inspect the model architecture more clearly with `model.summary()`.
+## 📜 License
 
-#### Does the Old Way Still Work?
+This repository contains course materials from Coursera's Machine Learning Specialization. All original course content is property of Stanford University and Coursera. Personal notes and modifications are for educational purposes only.
 
-**Yes!** It's just deprecated, not removed. The course notebooks use the older approach since they were created before this change. Your code will work fine, you'll just see warnings.
+## 🤝 Acknowledgments
 
-**Bottom line**: It's a stylistic/API evolution for better code clarity. Both ways functionally do the same thing, but the new way is more explicit and consistent.
+- Stanford University and Coursera for providing the course materials
+- Andrew Ng for creating this excellent learning resource
