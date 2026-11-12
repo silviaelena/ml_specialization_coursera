@@ -16,6 +16,16 @@ This repository serves as my learning playground for the Machine Learning Specia
 
 ```
 .
+├── Course1_SupervisedMachineLearning/
+│   └── Week1/
+│       ├── C1_W1_Lab01_Python_Jupyter_Soln.ipynb     # Python & Jupyter intro
+│       ├── C1_W1_Lab02_Model_Representation_Soln.ipynb # Linear regression model
+│       ├── C1_W1_Lab03_Cost_function_Soln.ipynb      # Cost function
+│       ├── C1_W1_Lab04_Gradient_Descent_Soln.ipynb   # Gradient descent
+│       ├── lab_utils_common.py, lab_utils_uni.py     # Lab utilities
+│       ├── data.txt, deeplearning.mplstyle
+│       ├── images/                                   # Course images and diagrams
+│       └── betaversion/                              # Older version of the Week 1 labs
 └── Course2_AdvancedLearningAlgorithms/
     ├── C2_W1_Lab01_Neurons_and_Layers.ipynb        # Neural networks basics
     ├── C2_W1_Lab01_Neurons_and_Layers_Notes.md     # Lab 1 notes & explanations
